@@ -1,38 +1,189 @@
-.App {
-  text-align: center;
+body {
+    background-color: #ff7575;
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+    width: 90%;
+    max-width: 500px;
+    padding: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* --- Header Styling (Adjusted for <h1> and <span>) --- */
+.title {
+    font-size: 3em;
+    font-weight: bold;
+    margin-bottom: 0.1em;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.title span {
+    display: block; /* Makes the span appear on a new line */
+    font-size: 0.3em; /* Relative to the h1 font size */
+    opacity: 0.8;
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    margin-bottom: 20px;
+    font-weight: normal;
 }
 
-.App-link {
-  color: #61dafb;
+/* --- List Styling (Tasks) --- */
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.task-list li {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 1.5em;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2em;
+}
+
+/* Use the new class name for the text label */
+.task-list li .label {
+    flex-grow: 1;
+}
+
+/* Style for completed tasks (if you add a 'completed' class to the <li>) */
+.completed .label {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+/* Controls wrapper */
+.actions {
+    display: flex;
+    align-items: center;
+}
+
+/* Style for the delete button (the 'x') */
+.btn-action-delete {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2em;
+    margin-left: 10px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    padding: 0; /* Remove default button padding */
+}
+
+.btn-action-delete:hover {
+    opacity: 1;
+}
+
+/* --- Checkbox Styling (Custom Look) --- */
+/* Target the checkbox using its class name */
+.btn-action[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid white;
+    cursor: pointer;
+    margin-left: 10px;
+    position: relative;
+    outline: none;
+}
+
+.btn-action[type="checkbox"]:checked::after {
+    content: '\2713';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    line-height: 1;
+    color: white;
+}
+
+/* --- Filter Area Styling --- */
+.filter-wrapper {
+    margin-top: 25px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    font-size: 0.9em;
+}
+
+.filter-wrapper .filter-label {
+    /* Ensure the label is next to the checkbox */
+    margin-right: 5px;
+}
+
+/* Use the checkbox style for the filter input as well */
+.filter-wrapper input[type="checkbox"] {
+    margin: 0;
+}
+
+/* --- Form/Input Styling --- */
+.form {
+    margin-top: 30px;
+}
+
+.form label {
+    display: block; /* Make the label appear above the input */
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/* Style the input and button to be next to each other */
+.form {
+    display: flex;
+    flex-wrap: wrap; /* Allows input and button to wrap if space is tight */
+    align-items: center;
+}
+
+.form input[type="text"] {
+    /* Input must be full width of available space */
+    display: block;
+    margin-left: 2em;
+    flex-grow: 1;
+    height: 3rem;
+    font-family: "Quicksand", sans-serif;
+    font-size: 1.1em;
+    background: #f7f1f1;
+    color: #333;
+    padding: 0 1.5em; 
+    border: none;
+    box-sizing: border-box;
+    border-radius: 10px; /* Rounded corners on the left */
+}
+
+.form button[type="submit"] {
+    /* The provided CSS snippet for the button */
+    height: 3rem;
+    padding: 0 1.3rem;
+    
+    background: #89ffa7;
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+    font-weight: bold;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 25px 0 0 10px;
+    cursor: pointer;
+    transition: background 0.2s ease-out;
+    font-family: "Quicksand", sans-serif;
+    border-radius: 10px; /* Rounded corners on the right */
+    white-space: nowrap;
+}
+
+.form button[type="submit"]:hover {
+    filter: brightness(110%);
 }

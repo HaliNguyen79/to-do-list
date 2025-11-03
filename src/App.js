@@ -5,10 +5,10 @@ function App() {
   const [tasks, setTasks] = useState([
     { id: 'task1', title: 'Learn JS', status: 1 },
     { id: 'task2', title: 'Code a To-do Lst', status: 0 },
-    { id: 'task3', title: '', status: 0 },
+    { id: 'task3', title: 'Do Something', status: 0 },
   ]);
   const [showIncomplete, setShowIncomplete] = useState(false);
-  const [newTask, setNewTask] = useState('123');
+  const [newTask, setNewTask] = useState('');
   return (
     <div className="container">
       <h1 className="title">
@@ -20,7 +20,7 @@ function App() {
         {tasks
           .filter((task) => (showIncomplete ? task.status !== 1 : true))
           .map((task) => (
-            <li key={task.id} className={task.status == 1 ? 'done' : ''}>
+            <li key={task.id} className={task.status ? 'done' : ''}>
               <span className="label">{task.title}</span>
               <div className="actions">
                 <input type="checkbox" className="btn-action" />
@@ -34,7 +34,7 @@ function App() {
         <label htmlFor="filter" className="filter-label">
           Show incompleted tasks only
         </label>
-        <input type="checkbox" id="filter" checked={showIncomplete} />
+        <input onClick={()=>setShowIncomplete(!showIncomplete)} type="checkbox" id="filter" checked={showIncomplete} />
       </div>
 
       <form action="#" className="form">
